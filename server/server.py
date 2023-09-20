@@ -1,10 +1,30 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
+import os
 
 # app instance
 app = Flask(__name__)
 CORS(app)
+
+# Cargar las variables de entorno desde el archivo .env.development.local
+load_dotenv('.env.development.local')
+# Acceder a la variable POSTGRES_URL
+postgres_url = os.getenv('POSTGRES_URL')
+# Configuración de la conexión a la base de datos
+app.config['SQLALCHEMY_DATABASE_URI'] = postgres_url
+db = SQLAlchemy(app)
+
+
+@app.route("/test_db_connection")
+def test_db_connection():
+    try:
+        # Intenta realizar una operación simple de consulta a la base de datos
+        db.session.execute('SELECT 1')
+        return "Conexión exitosa a la base de datos"
+    except Exception as e:
+        return f"Error de conexión a la base de datos: {str(e)}"
 
 
 @app.route("/api/home", methods=['GET'])
