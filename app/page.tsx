@@ -4,13 +4,13 @@ type pageProps = {};
 
 interface User {
   id: number;
-  name: string;
-  email: string;
+  nombre: string;
+  correo: string;
 }
 
 const page: React.FC<pageProps> = async () => {
-  // const res = await fetch("http://127.0.0.1:8080/api/home", { cache: "no-store" });
-  // const users: User[] = await res.json();
+  const res = await fetch("http://127.0.0.1:8080/api/poblar_db", { cache: "no-store" });
+  const users: User[] = await res.json();
 
   return (
     <>
@@ -22,13 +22,14 @@ const page: React.FC<pageProps> = async () => {
             <th>Email</th>
           </tr>
         </thead>
-        {/* <tbody>
+        <tbody>
           {users.map((user) => (
             <tr key={user.id}>
-              <td>{user.name}</td>
+              <td>{user.nombre}</td>
+              <td>{user.correo}</td>
             </tr>
           ))}
-        </tbody> */}
+        </tbody>
       </table>
     </>
   );
