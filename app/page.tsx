@@ -16,7 +16,7 @@ const page: React.FC<pageProps> = async () => {
   return (
     <>
       <h1>Users</h1>
-      <table className='table table-bordered'>
+      <table className='table table-zebra'>
         <thead>
           <tr>
             <th>Name</th>
