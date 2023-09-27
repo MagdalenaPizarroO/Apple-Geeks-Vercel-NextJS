@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 import Logo from "../assets/logo.png";
 import Image from "next/image";
+import Avatar from "../assets/avatar-placeholder.png";
 
 type Props = {};
 
@@ -38,16 +39,19 @@ export default function Navbar({}: Props) {
             </li>
           </ul>
         </div>
-        <Link href='/'>
-          <Image
-            src={Logo}
-            style={{ width: "150px", height: "60px", marginLeft: "80px", marginRight: "120px" }}
-            alt='logo Apple Geeks'
-          />
-        </Link>
+        <div className='mx-auto hidden lg:flex'>
+          <Link href='/'>
+            <Image src={Logo} style={{ width: "150px", height: "60px" }} alt='logo Apple Geeks' />
+          </Link>
+        </div>
       </div>
-      <div className='navbar-center hidden lg:flex'>
-        <ul className='menu menu-horizontal px-1'>
+      <div className='navbar-center'>
+        <div className='mx-auto lg:hidden'>
+          <Link href='/'>
+            <Image src={Logo} style={{ width: "150px", height: "60px" }} alt='logo Apple Geeks' />
+          </Link>
+        </div>
+        <ul className='menu menu-horizontal px-1 hidden lg:flex'>
           <li>
             <Link href='/'>Inicio</Link>
           </li>
@@ -67,12 +71,31 @@ export default function Navbar({}: Props) {
         </ul>
       </div>
       <div className='navbar-end'>
-        <Link href='login' className='btn btn-outline btn-success'>
-          Ingreso Proveedor
-        </Link>
-        <Link href='sign-up' className='btn btn-outline btn-success btn-xs'>
-          Registro Proveedor
-        </Link>
+        <div className='dropdown dropdown-bottom dropdown-end'>
+          <label tabIndex={0} className='btn btn-ghost btn-circle avatar lg:hidden'>
+            <div className='w-10 rounded-full'>
+              <Image src={Avatar} alt='avatar placeholder' />
+            </div>
+          </label>
+          <ul tabIndex={0} className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'>
+            <li>
+              <Link href='/'>Ingreso Proveedor</Link>
+            </li>
+            <li>
+              <Link href='/'>Registro Proveedor</Link>
+            </li>
+          </ul>
+        </div>
+        <div className='hidden lg:flex'>
+          <ul className='menu menu-horizontal'>
+            <li className='btn btn-outline btn-success mx-1 p-0'>
+              <Link href='login'>Ingreso Proveedor</Link>
+            </li>
+            <li className='btn btn-outline btn-success  p-0'>
+              <Link href='sign-up'>Registro Proveedor</Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
