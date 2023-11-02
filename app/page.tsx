@@ -8,9 +8,9 @@ type Props = {};
 export default function Home({}: Props) {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <HomeContent />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

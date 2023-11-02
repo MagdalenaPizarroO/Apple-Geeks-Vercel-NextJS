@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import Logo from "../assets/logo.png";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Avatar from "../assets/avatar-placeholder.png";
 
 type Props = {};
@@ -41,14 +41,14 @@ export default function Navbar({}: Props) {
         </div>
         <div className='mx-auto hidden lg:flex'>
           <Link href='/'>
-            <Image src={Logo} style={{ width: "150px", height: "60px" }} alt='logo Apple Geeks' />
+            <Image src={Logo} width={150} height={60} alt='logo Apple Geeks' />
           </Link>
         </div>
       </div>
       <div className='navbar-center'>
         <div className='mx-auto lg:hidden'>
           <Link href='/'>
-            <Image src={Logo} style={{ width: "150px", height: "60px" }} alt='logo Apple Geeks' />
+            <Image src={Logo} width={150} height={60} alt='logo Apple Geeks' />
           </Link>
         </div>
         <ul className='menu menu-horizontal px-1 hidden lg:flex'>

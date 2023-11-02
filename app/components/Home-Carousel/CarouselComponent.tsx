@@ -1,13 +1,16 @@
 "use client";
-
-import Image from "next/image";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import CarouselSlide from "./CarouselSlide";
+import CarouselButtons from "./CarouselButtons";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-interface Slide {
+export interface Slide {
+  id: string;
   src: string;
   width: number;
   height: number;
+  title: string;
+  subtitle: string;
 }
 
 interface Props {
@@ -21,9 +24,15 @@ const Carousel: React.FC<Props> = ({ slides }) => {
     setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
   };
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  };
+  }, [setCurrent, slides.length]);
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000);
+
+    return () => clearInterval(interval);
+  }, [nextSlide, current]);
 
   return (
     <div className='overflow-hidden relative'>
@@ -33,15 +42,10 @@ const Carousel: React.FC<Props> = ({ slides }) => {
           transform: `translateX(-${current * 100}%)`,
         }}
       >
-        {slides.map((s, index) => {
-          return (
-            <div key={index} style={{ width: `${s.width}px`, height: `${s.height}px` }}>
-              <Image src={s.src} alt={`carousel-${index}`} layout='fill' objectFit='cover' />
-            </div>
-          );
-        })}
+        {slides.map((s) => (
+          <CarouselSlide key={s.id} slide={s} />
+        ))}
       </div>
-
       <div className='absolute top-0 h-full w-full justify-between flex px-8 text-gray-400 text-4xl'>
         <button onClick={previousSlide}>
           <IoIosArrowBack />
@@ -50,6 +54,7 @@ const Carousel: React.FC<Props> = ({ slides }) => {
           <IoIosArrowForward />
         </button>
       </div>
+      <CarouselButtons slides={slides} currentSlide={current} setCurrentSlide={setCurrent} />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "./../assets/logo.png";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 type Props = {};
 
@@ -8,7 +8,7 @@ const Footer = (props: Props) => {
   return (
     <footer className='grid w-full grid-flow-col place-items-start gap-x-4 gap-y-10 x-text-sm leading-5 bg-base-200 p-5'>
       <div className='w-full flex-1 max-w-xs text-center'>
-        <Image src={Logo} className='mx-auto mb-3' style={{ width: "150px", height: "60px" }} alt='logo Apple Geeks' />
+        <Image src={Logo} className='mx-auto mb-3' width={150} height={60} alt='logo Apple Geeks' />
         <div>
           <p className=''>
             Sumérgete en el universo Apple con nosotros, donde la elegancia y la innovación convergen y será tu conexión
