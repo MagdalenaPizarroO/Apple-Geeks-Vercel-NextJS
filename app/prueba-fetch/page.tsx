@@ -1,4 +1,5 @@
 import React from "react";
+import { sql } from "@vercel/postgres";
 
 type pageProps = {};
 
@@ -10,10 +11,7 @@ interface Usuario {
 }
 
 const page: React.FC<pageProps> = async () => {
-	const res = await fetch("", {
-		cache: "no-store",
-	});
-	const users: Usuario[] = await res.json();
+	const { rows } = await sql`SELECT * from Usuario`;
 
 	return (
 		<>
@@ -27,7 +25,7 @@ const page: React.FC<pageProps> = async () => {
 					</tr>
 				</thead>
 				<tbody>
-					{users.map((user) => (
+					{rows.map((user) => (
 						<tr key={user.id}>
 							<td>{user.nombre}</td>
 							<td>{user.correo}</td>
