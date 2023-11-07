@@ -15,18 +15,18 @@ export default function Login({}: Props) {
 				<Image src={LoginImage} alt='Imagen login' />
 			</div>
 			<div className='basis-1/2 items-center max-w-md mx-auto'>
-				<h4 className='text-center mb-4'>¡Bienvenido Proveedor!</h4>
-				<h5 className='text-center mb-4'>Ingrese sus Datos para Acceder al Portal</h5>
+				<h4 className='text-center mb-4 text-xl font-semibold'>¡Bienvenido Proveedor!</h4>
+				<h5 className='text-center mb-4 text-lg '>Ingrese sus Datos para Acceder al Portal</h5>
 				<form
 				// onSubmit={handleSubmit}
 				>
-					<div className=''>
+					<div className='my-4'>
 						<label htmlFor='username' className='form-label'>
 							Usuario:
 						</label>
 						<input
 							type='text'
-							className='input input-bordered input-success w-full max-w-xs'
+							className='input input-bordered input-success w-full max-w-xs block'
 							id='username'
 							maxLength={50}
 							// value={username}
@@ -42,13 +42,13 @@ export default function Login({}: Props) {
 						</label>
 						<input
 							type='password'
-							className='form-control'
+							className='input input-bordered input-success w-full max-w-xs block'
 							id='password'
-							// minLength='3'
-							// maxLength='50'
+							minLength={3}
+							maxLength={50}
 							// value={password}
 							// onChange={handlePasswordChange}
-							// required
+							required
 						/>
 						{/* <div className='invalid-feedback'>La contraseña debe tener al menos 3 caracteres.</div> */}
 					</div>
