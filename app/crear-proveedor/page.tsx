@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import { ValidaRut } from "./validaRut";
 
 type Props = {};
 
 const CrearProveedor = (props: Props) => {
+	const [formValues, setFormValues] = useState({
+		rut: "",
+		nombre: "",
+		apellido: "",
+		region: "",
+		comuna: "",
+		direccion: "",
+		telefono: "+569 ",
+		red_social: "http://",
+		correo: "",
+		contrasena: "",
+	});
+
 	return (
 		<div className='m-10'>
 			<h4 className=' text-xl font-semibold'>Creación de Cuenta</h4>
@@ -15,7 +29,10 @@ const CrearProveedor = (props: Props) => {
 							<div className='flex'>
 								<div className='m-2'>
 									<label htmlFor='rut'>Rut:</label>
-									{/* <ValidaRut rutInicial={formValues.rut} onChange={(formattedRut) => setFormValues({ ...formValues, rut: formattedRut })} /> */}
+									<ValidaRut
+										rutInicial={formValues.rut}
+										onChange={(formattedRut) => setFormValues({ ...formValues, rut: formattedRut })}
+									/>
 								</div>
 								<div className='m-2'>
 									<label htmlFor='nombre'>Nombre:</label>
