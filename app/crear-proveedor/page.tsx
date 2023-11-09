@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
 import { ValidaRut } from "./validaRut";
 
 type Props = {};
@@ -16,6 +16,13 @@ const CrearProveedor = (props: Props) => {
 		correo: "",
 		contrasena: "",
 	});
+
+	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+		setFormValues({
+			...formValues,
+			[e.target.id]: e.target.value,
+		});
+	};
 
 	return (
 		<div className='m-10'>
@@ -43,7 +50,7 @@ const CrearProveedor = (props: Props) => {
 										minLength={3}
 										maxLength={100}
 										style={{ width: "300px" }}
-										// onChange={handleChange}
+										onChange={handleChange}
 									/>
 								</div>
 								<div className='m-2'>
@@ -55,7 +62,7 @@ const CrearProveedor = (props: Props) => {
 										minLength={3}
 										maxLength={100}
 										style={{ width: "300px" }}
-										// onChange={handleChange}
+										onChange={handleChange}
 									/>
 								</div>
 							</div>
@@ -77,7 +84,7 @@ const CrearProveedor = (props: Props) => {
 									style={{ width: "600px" }}
 									minLength={3}
 									maxLength={200}
-									// onChange={handleChange}
+									onChange={handleChange}
 								/>
 							</div>
 						</div>
@@ -96,8 +103,8 @@ const CrearProveedor = (props: Props) => {
 									id='telefono'
 									maxLength={50}
 									style={{ width: "300px" }}
-									// value={formValues.telefono}
-									// onChange={handleChange}
+									value={formValues.telefono}
+									onChange={handleChange}
 								/>
 							</div>
 
@@ -109,8 +116,8 @@ const CrearProveedor = (props: Props) => {
 									id='red_social'
 									maxLength={100}
 									style={{ width: "600px" }}
-									// value={formValues.red_social}
-									// onChange={handleChange}
+									value={formValues.red_social}
+									onChange={handleChange}
 								/>
 							</div>
 						</div>
@@ -130,7 +137,7 @@ const CrearProveedor = (props: Props) => {
 									style={{ width: "300px" }}
 									minLength={3}
 									maxLength={100}
-									// onChange={handleChange}
+									onChange={handleChange}
 								/>
 							</div>
 							<div className='col'>
@@ -142,7 +149,7 @@ const CrearProveedor = (props: Props) => {
 									style={{ width: "300px" }}
 									minLength={3}
 									maxLength={100}
-									// onChange={handleChange}
+									onChange={handleChange}
 								/>
 							</div>
 							<div className='col'>
@@ -154,7 +161,7 @@ const CrearProveedor = (props: Props) => {
 									style={{ width: "300px" }}
 									minLength={3}
 									maxLength={20}
-									// onChange={handleChange}
+									onChange={handleChange}
 								/>
 							</div>
 						</div>
